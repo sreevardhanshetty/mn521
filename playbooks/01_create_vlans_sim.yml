@@ -1,0 +1,22 @@
+---
+- name: Simulate VLAN creation on switches
+  hosts: ios
+  gather_facts: no
+  connection: local
+
+  vars:
+    vlans:
+      - id: 10
+        name: Users
+      - id: 20
+        name: Servers
+
+  tasks:
+    - name: Show VLANs that would be created
+      debug:
+        msg: "VLAN ID={{ item.id }} Name={{ item.name }} would be created on {{ inventory_hostname }}"
+      loop: "{{ vlans }}"
+
+    - name: Simulated VLAN creation complete
+      debug:
+        msg: "VLAN configuration simulated successfully on {{ inventory_hostname }}"

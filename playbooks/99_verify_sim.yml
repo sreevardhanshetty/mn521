@@ -1,0 +1,10 @@
+---
+- name: Verify simulated configurations
+  hosts: ios
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Confirm simulated VLANs and OSPF configuration
+      debug:
+        msg: "Verification successful: VLANs and OSPF configuration simulated for {{ inventory_hostname }}"

@@ -1,0 +1,13 @@
+ansible_password: "AnsiblePass!"
+
+vlans:
+  - id: 10
+    name: Users
+  - id: 20
+    name: Servers
+
+ospf_process: 1
+ospf_networks:
+  - { network: "10.0.0.0 0.0.0.3", area: 0 }
+  - { network: "192.168.10.0 0.0.0.255", area: 0 }
+  - { network: "192.168.20.0 0.0.0.255", area: 0 }

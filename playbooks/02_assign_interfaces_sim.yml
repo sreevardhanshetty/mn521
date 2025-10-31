@@ -1,0 +1,22 @@
+---
+- name: Simulate interface assignments
+  hosts: ios
+  gather_facts: no
+  connection: local
+
+  vars:
+    interfaces:
+      - name: GigabitEthernet0/1
+        vlan: 10
+      - name: GigabitEthernet0/2
+        vlan: 20
+
+  tasks:
+    - name: Show interface assignments
+      debug:
+        msg: "Interface {{ item.name }} assigned to VLAN {{ item.vlan }} on {{ inventory_hostname }}"
+      loop: "{{ interfaces }}"
+
+    - name: Simulated interface assignment complete
+      debug:
+        msg: "Interface assignment simulation successful on {{ inventory_hostname }}"

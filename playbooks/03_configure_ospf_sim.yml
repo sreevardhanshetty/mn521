@@ -1,0 +1,21 @@
+---
+- name: Simulate OSPF configuration
+  hosts: ios
+  gather_facts: no
+  connection: local
+
+  vars:
+    ospf_process: 1
+    ospf_networks:
+      - { network: "10.0.0.0 0.0.0.3", area: 0 }
+      - { network: "192.168.10.0 0.0.0.255", area: 0 }
+
+  tasks:
+    - name: Show OSPF networks being configured
+      debug:
+        msg: "Would configure network {{ item.network }} area {{ item.area }} on {{ inventory_hostname }}"
+      loop: "{{ ospf_networks }}"
+
+    - name: Simulated OSPF configuration complete
+      debug:
+        msg: "OSPF process {{ ospf_process }} simulation completed on {{ inventory_hostname }}"
