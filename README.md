@@ -17,7 +17,7 @@ It automates common networking tasks such as:
 
 Because Packet Tracer does not support SSH access, all playbooks were executed in simulation mode, using Ansible's debug module to validate automation logic and output.
 
-## 2. Environment Setup (macOS)
+## 2. Environment Setup
 
 Create and activate a Python virtual environment:
 
